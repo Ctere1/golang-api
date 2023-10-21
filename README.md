@@ -23,7 +23,9 @@
 </div>
 
 ## ℹ️ Introduction
-- Product API for CRUD operations. Written in GoLang and PostgreSQL. Bearer token authentication is used.
+- Product API for CRUD operations. 
+- Written in GoLang and PostgreSQL. Bearer token authentication is used. 
+- Database connection is made with GORM. Server is created with gorilla/mux. 
 
 
 ## 💾Installation Guide
@@ -44,7 +46,7 @@
 
 ## ⚡API
 >**Note**   
-See Postman Collection Json for detailed information.
+See postman collection json for detailed information.
 
 
 ### **Product Endpoints**
@@ -58,7 +60,20 @@ See Postman Collection Json for detailed information.
 | `PUT`       | `/api/v1/product/`          |  Updates and returns product        |
 
 >**Warning**   
-Product Sku is unique and required.
+Product sku is unique and required.
+
+### **Category Endpoints**
+
+| HTTP Verb   | Endpoint                    | Description                         |
+| :---------- | :-----------------------    |:----------------------------------  |
+| `GET`       | `/api/v1/category`          |  Returns All Categories             |
+| `GET`       | `/api/v1/category/{id}`     |  Returns the category with {id}     |
+| `DELETE`    | `/api/v1/category/{id}`     |  Deletes the category with {id}     |
+| `POST`      | `/api/v1/category/`         |  Creates and returns category       |
+| `PUT`       | `/api/v1/category/`         |  Updates and returns category       |
+
+>**Warning**
+Category name is unique and required.
 
 
 ### **Product Data Example**
@@ -68,7 +83,17 @@ Product Sku is unique and required.
     "Name": "test1",
     "Price": "123",
     "Description": "test desc",
-    "Sku": "sku1"
+    "Sku": "sku1",
+    "CategoryId": "1"
+}
+```
+
+### **Category Data Example**
+
+```json
+{
+    "Id": "1",
+    "Name": "test1",
 }
 ```
 
