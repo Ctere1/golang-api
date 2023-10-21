@@ -1,0 +1,84 @@
+<h1 align="center">
+  GoLang API
+  
+  ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+  ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+  <br>
+</h1>
+
+<p align="center">
+  <a href="#introduction">Introduction</a> •
+  <a href="#installation-guide">Installation Guide</a> •
+  <a href="#api">API Reference</a> •
+  <a href="#license">License</a> •
+  <a href="#contributors">Contributors</a> 
+</p>
+
+<div align="center">
+
+![GitHub Repo stars](https://img.shields.io/github/stars/Ctere1/golang-api)
+![GitHub forks](https://img.shields.io/github/forks/Ctere1/golang-api)
+![GitHub watchers](https://img.shields.io/github/watchers/Ctere1/golang-api)
+
+</div>
+
+## ℹ️ Introduction
+- Product API for CRUD operations. Written in GoLang and PostgreSQL. Bearer token authentication is used.
+
+
+## 💾Installation Guide
+
+- To clone and run this application, you'll need [Git](https://git-scm.com), [Go](https://go.dev/), [PostgreSQL](https://www.postgresql.org/) installed on your computer. From your command line:
+
+    ```bash
+    # Clone this repository
+    $ git clone https://github.com/Ctere1/golang-api
+    # Go into cmd folder
+    $ cd cmd 
+    # Run the app
+    $ go run main.go
+    ```
+
+- You can change the database connection string in the `app.toml` file. Also, you can change the API listen address and port.   
+    > After these steps, you can use the API with Postman or any other API testing tool.
+
+## ⚡API
+>**Note**   
+See Postman Collection Json for detailed information.
+
+
+### **Product Endpoints**
+
+| HTTP Verb   | Endpoint                    | Description                         |  
+| :---------- | :-----------------------    |:----------------------------------  |    
+| `GET`       | `/api/v1/product`           |  Returns All Products               |
+| `GET`       | `/api/v1/product/{sku}`     |  Returns the product with {sku}     |
+| `DELETE`    | `/api/v1/product/{sku}`     |  Deletes the product with {sku}     |
+| `POST`      | `/api/v1/product/`          |  Creates and returns product        |
+| `PUT`       | `/api/v1/product/`          |  Updates and returns product        |
+
+>**Warning**   
+Product Sku is unique and required.
+
+
+### **Product Data Example**
+
+```json
+{
+    "Name": "test1",
+    "Price": "123",
+    "Description": "test desc",
+    "Sku": "sku1"
+}
+```
+
+## ©License
+![GitHub](https://img.shields.io/github/license/Ctere1/golang-api?style=flat-square)
+
+
+## 📌Contributors
+
+<a href="https://github.com/Ctere1/">
+  <img src="https://contrib.rocks/image?repo=Ctere1/Ctere1" />
+</a>
+

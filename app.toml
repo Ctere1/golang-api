@@ -1,0 +1,16 @@
+[database]
+    server = "127.0.0.1"
+    port = "5432"
+    username = "postgres"
+    password = "admin"
+    dbname = "postgres"
+    sslmode = "disable"
+    timezone = "Europe/Istanbul"
+    MaxOpenConns = 20
+    MaxIdleConns = 20
+    ConnMaxLifetimeInMinutes = 5
+
+[api]
+	ListenAddress = "localhost"
+    ListenPort = "443"
+    BearerToken = "test"
