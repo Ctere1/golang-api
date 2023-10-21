@@ -69,6 +69,12 @@ func ApiGetProducts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if len(products) == 0 {
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(map[string]string{"error": "No products found"})
+		return
+	}
+
 	// Return products as JSON
 	json.NewEncoder(w).Encode(products)
 

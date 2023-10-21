@@ -15,7 +15,7 @@ type productTable interface {
 }
 
 var (
-	Dsn                   string = "host=localhost user=postgres password=admin dbname=postgres port=5432 sslmode=disable TimeZone=Europe/Istanbul"
+	Dsn                   string
 	productDatabaseEngine productTable
 )
 
