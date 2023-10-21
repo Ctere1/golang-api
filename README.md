@@ -9,6 +9,7 @@
 <p align="center">
   <a href="#introduction">Introduction</a> •
   <a href="#installation-guide">Installation Guide</a> •
+  <a href="#project-structure">Project Structure</a> •
   <a href="#api">API Reference</a> •
   <a href="#license">License</a> •
   <a href="#contributors">Contributors</a> 
@@ -43,6 +44,38 @@
 
 - You can change the database connection string in the `app.toml` file. Also, you can change the API listen address and port.   
     > After these steps, you can use the API with Postman or any other API testing tool.
+
+## 🗺️Project Structure 
+
+- You can take a part of it and edit it to suit your own needs and liking.  
+- The project structure is as follows:    
+
+  ```bash
+  ├───cmd
+  │   └───main.go
+  ├───pkgs
+  │   ├───api
+  │   │   ├───router.go
+  │   │   └───RestHandler.go
+  │   ├───category
+  │   │   ├───categoryApiHandler.go
+  │   │   └───categoryController.go
+  │   ├───configs
+  │   │   └───configs.go
+  │   ├───product
+  │   │   ├───productApiHandler.go
+  │   │   └───productController.go
+  │   └───storage
+  │       ├───categoryPostgres.go
+  │       ├───productPostgres.go
+  │       └───storage.go
+  ├───app.toml
+  ├───go.mod
+  ├───go.sum
+  ├───LICENSE
+  ├───README.md
+  └───postman_collection.json
+  ``` 
 
 ## ⚡API
 >**Note**   
