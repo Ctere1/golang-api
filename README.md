@@ -9,7 +9,7 @@
 <p align="center">
   <a href="#introduction">Introduction</a> •
   <a href="#installation-guide">Installation Guide</a> •
-  <a href="#project-structure">Project Structure</a> •
+  <a href="#%EF%B8%8Fproject-structure">Project Structure</a> •
   <a href="#api">API Reference</a> •
   <a href="#license">License</a> •
   <a href="#contributors">Contributors</a> 
