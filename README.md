@@ -11,6 +11,7 @@
   <a href="#installation-guide">Installation Guide</a> •
   <a href="#%EF%B8%8Fproject-structure">Project Structure</a> •
   <a href="#api">API Reference</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#license">License</a> •
   <a href="#contributors">Contributors</a> 
 </p>
@@ -27,7 +28,8 @@
 - Product API for CRUD operations. 
 - Written in GoLang and PostgreSQL. Bearer token authentication is used. 
 - Database connection is made with GORM. Server is created with gorilla/mux. 
-
+- I am just making this project for learning purposes. I am open to any suggestions and contributions.
+- Project can be evolved with adding new features and tests.
 
 ## 💾Installation Guide
 
@@ -76,6 +78,18 @@
   ├───README.md
   └───postman_collection.json
   ``` 
+
+#### What is the purpose of each folder and file?
+
+- `cmd` folder contains the main.go file. This file is the entry point of the application.
+- `pkgs` folder contains the application logic.
+- `api` folder contains the router and RestHandler files. These files are used to create the server and handle the requests.
+- `category` folder contains the categoryApiHandler and categoryController files. These files are used to handle the category requests.
+- `product` folder contains the productApiHandler and productController files. These files are used to handle the product requests.
+- `storage` folder contains the storage and database files. These files are used to connect to the database and make CRUD operations.
+- `app.toml` file contains the application configurations.
+- `go.mod` and `go.sum` files are used to manage the dependencies.
+
 
 ## ⚡API
 >**Note**   
@@ -129,6 +143,17 @@ Category name is unique and required.
     "Name": "test1",
 }
 ```
+
+## 🤝Contributing
+
+- Fork the project (Fork button in the top right corner)
+  - Clone it on your local machine
+  - Create your feature branch (git checkout -b feature/yourFeature)
+  - Commit your changes (git commit -m 'Add some yourFeature')
+  - Push your branch (git push origin feature/yourFeature)
+  - Open a new Pull Request
+
+- You can also contribute to the project by opening issues.
 
 ## ©License
 ![GitHub](https://img.shields.io/github/license/Ctere1/golang-api?style=flat-square)
