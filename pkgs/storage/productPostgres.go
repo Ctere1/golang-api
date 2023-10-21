@@ -14,7 +14,7 @@ var (
 	MaxOpenConns             int
 	MaxIdleConns             int
 	ConnMaxLifetimeInMinutes int
-	database                 *gorm.DB
+	db_product               *gorm.DB
 	once                     sync.Once
 )
 
@@ -24,14 +24,15 @@ type products struct {
 	Name        string
 	Price       string `gorm:"default:null"`
 	Description string `gorm:"default:null"`
+	CategoryID  string `gorm:"default:null"`
 }
 
 type postgresProduct struct{}
 
 // Create implements productTable.
-func (postgresProduct) Create(sku string, name string, price string, description string) error {
-	product := products{Sku: sku, Name: name, Price: price, Description: description}
-	db := database.Create(&product)
+func (postgresProduct) Create(sku string, name string, price string, description string, categoryId string) error {
+	product := products{Sku: sku, Name: name, Price: price, Description: description, CategoryID: categoryId}
+	db := db_product.Create(&product)
 	if db.Error != nil {
 		return db.Error
 	}
@@ -41,7 +42,7 @@ func (postgresProduct) Create(sku string, name string, price string, description
 // Delete implements productTable.
 func (postgresProduct) Delete(sku string) error {
 	product := products{}
-	db := database.Where("sku = ?", sku).Delete(&product)
+	db := db_product.Where("sku = ?", sku).Delete(&product)
 	if db.Error != nil {
 		return db.Error
 	}
@@ -49,26 +50,26 @@ func (postgresProduct) Delete(sku string) error {
 }
 
 // Get implements productTable.
-func (postgresProduct) Get(sku string) (name string, price string, description string, err error) {
+func (postgresProduct) Get(sku string) (name string, price string, description string, categoryId string, err error) {
 	product := products{}
-	db := database.Where("sku = ?", sku).First(&product)
+	db := db_product.Where("sku = ?", sku).First(&product)
 	if db.Error != nil {
-		return "", "", "", db.Error
+		return "", "", "", "", db.Error
 	}
-	return product.Name, product.Price, product.Description, nil
+	return product.Name, product.Price, product.Description, product.CategoryID, nil
 }
 
 // Update implements productTable.
-func (postgresProduct) Update(sku string, name string, price string, description string) error {
+func (postgresProduct) Update(sku string, name string, price string, description string, categoryId string) error {
 	// If sku is not found, returns error
-	_, _, _, err := postgresProduct{}.Get(sku)
+	_, _, _, _, err := postgresProduct{}.Get(sku)
 	if err != nil {
 		return err
 	}
 
 	// Update product
-	product := products{Sku: sku, Name: name, Price: price, Description: description}
-	db := database.Where("sku = ?", sku).Updates(&product)
+	product := products{Sku: sku, Name: name, Price: price, Description: description, CategoryID: categoryId}
+	db := db_product.Where("sku = ?", sku).Updates(&product)
 	if db.Error != nil {
 		return db.Error
 	}
@@ -77,7 +78,7 @@ func (postgresProduct) Update(sku string, name string, price string, description
 
 // Get All products
 func (postgresProduct) GetAll() (products []products, err error) {
-	db := database.Find(&products)
+	db := db_product.Find(&products)
 	if db.Error != nil {
 		return nil, db.Error
 	}
@@ -88,19 +89,19 @@ func (p postgresProduct) Connect() *gorm.DB {
 	var err error
 	once.Do(func() {
 
-		database, err = gorm.Open(postgres.Open(Dsn), &gorm.Config{PrepareStmt: true})
+		db_product, err = gorm.Open(postgres.Open(Dsn), &gorm.Config{PrepareStmt: true})
 		if err != nil {
 			panic("Database connection failed")
 		}
 
 	})
 
-	sqlDB, err := database.DB()
+	sqlDB, err := db_product.DB()
 	sqlDB.SetMaxOpenConns(MaxOpenConns)
 	sqlDB.SetMaxIdleConns(MaxIdleConns)
 	sqlDB.SetConnMaxLifetime(time.Duration(ConnMaxLifetimeInMinutes) * time.Minute)
 
-	return database
+	return db_product
 }
 
 func (p postgresProduct) Migrate() {

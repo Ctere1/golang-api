@@ -13,6 +13,7 @@ type Product struct {
 	Price       string
 	Description string
 	Sku         string
+	CategoryId  string
 }
 
 func ApiCreateProduct(w http.ResponseWriter, r *http.Request) {

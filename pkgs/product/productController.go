@@ -6,7 +6,7 @@ import (
 
 func createProduct(product Product) (*Product, error) {
 	// Create product in database
-	err := storage.CreateProduct(product.Sku, product.Name, product.Price, product.Description)
+	err := storage.CreateProduct(product.Sku, product.Name, product.Price, product.Description, product.CategoryId)
 	if err != nil {
 		return nil, err
 	}
@@ -16,7 +16,7 @@ func createProduct(product Product) (*Product, error) {
 
 func getProduct(productSku string) (*Product, error) {
 	// Get product from database
-	name, price, description, err := storage.GetProduct(productSku)
+	name, price, description, categoryId, err := storage.GetProduct(productSku)
 	if err != nil {
 		return nil, err
 	}
@@ -27,6 +27,7 @@ func getProduct(productSku string) (*Product, error) {
 		Price:       price,
 		Description: description,
 		Sku:         productSku,
+		CategoryId:  categoryId,
 	}
 
 	return &product, nil
@@ -47,6 +48,7 @@ func getProducts() ([]Product, error) {
 			Price:       p.Price,
 			Description: p.Description,
 			Sku:         p.Sku,
+			CategoryId:  p.CategoryID,
 		})
 	}
 
@@ -65,7 +67,7 @@ func deleteProduct(productSku string) error {
 
 func updateProduct(product Product) (*Product, error) {
 	// Update product in database
-	err := storage.UpdateProduct(product.Sku, product.Name, product.Price, product.Description)
+	err := storage.UpdateProduct(product.Sku, product.Name, product.Price, product.Description, product.CategoryId)
 	if err != nil {
 		return nil, err
 	}
