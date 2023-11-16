@@ -92,8 +92,8 @@
 
 
 ## ⚡API
->**Note**   
-See postman collection json for detailed information.
+> [!Tip] 
+> See postman collection json for detailed information.
 
 
 ### **Product Endpoints**
@@ -106,8 +106,8 @@ See postman collection json for detailed information.
 | `POST`      | `/api/v1/product/`          |  Creates and returns product        |
 | `PUT`       | `/api/v1/product/`          |  Updates and returns product        |
 
->**Warning**   
-Product sku is unique and required.
+> [!IMPORTANT]  
+> Product sku is unique and required.
 
 ### **Category Endpoints**
 
@@ -119,8 +119,8 @@ Product sku is unique and required.
 | `POST`      | `/api/v1/category/`         |  Creates and returns category       |
 | `PUT`       | `/api/v1/category/`         |  Updates and returns category       |
 
->**Warning**
-Category name is unique and required.
+> [!IMPORTANT]  
+> Category name is unique and required.
 
 
 ### **Product Data Example**
